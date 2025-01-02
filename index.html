@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/8PRsR4vT/inkspace-Sideways-logo-5.png">
+    <title>OneHeritage | Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #ffffff;
+            border-bottom: 2px solid #e0e0e0;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        header img {
+            max-height: 80px;
+            width: auto;
+            margin: 5px 0;
+        }
+
+        /* Hide menu toggle by default */
+        #menu-toggle {
+            display: none;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 40px;
+            margin-left: 2in;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #2d6a4f;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        nav ul li a.contact-btn {
+            background-color: #f4a261;
+            color: #ffffff;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 1.2em;
+            text-decoration: none;
+        }
+
+        .hero {
+            background-color: #2d6a4f;
+            color: #ffffff;
+            text-align: center;
+            padding: 100px 30px;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+
+        .hero button {
+            background-color: #f4a261;
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* About and Mission sections */
+        .about, .mission {
+            padding: 60px 40px;
+            max-width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .about {
+            background-color: white;
+            color: #2d6a4f;
+        }
+
+        .mission {
+            background-color: white;
+            color: #2d6a4f;
+        }
+
+        .about h2, .mission h2 {
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        .about-content, .mission-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Team section styles */
+        .team-header {
+            background-color: #2d6a4f;
+            color: white;
+            padding: 40px 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .team-header h2 {
+            margin-bottom: 15px;
+        }
+
+        .team-page {
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+            background-color: #f9f9f9;
+        }
+
+        /* Updated Team Member styles */
+        .team-member {
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            padding: 30px;
+            border-radius: 15px;
+            background-color: white;
+            color: #2d6a4f;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .team-member h3 {
+            color: #2d6a4f;
+            margin: 10px 0;
+        }
+
+        .team-member p {
+            text-align: left;
+            margin: 10px 0;
+            line-height: 1.6;
+            color: #2d6a4f;
+        }
+
+        .team-member a {
+            color: #2d6a4f;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .team-member a:hover {
+            text-decoration: underline;
+        }
+
+        /* Email link styles */
+        .team-member .email-link {
+            color: #2d6a4f;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .team-member .email-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Role spacing styles */
+        .team-member .role {
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* Contact page styles */
+        .contact-page {
+            margin: 1.5in;
+            padding: 0.5in;
+            background-color: #2d6a4f;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-page h2 {
+            margin-bottom: 20px;
+        }
+
+        .contact-page form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 40px;
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-page label {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .contact-page input,
+        .contact-page textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .contact-page button {
+            padding: 8px 20px;
+            font-size: 14px;
+            background-color: white;
+            color: #2d6a4f;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            align-self: flex-start;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #2d6a4f;
+            color: #ffffff;
+            padding: 30px;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        footer img {
+            max-height: 50px;
+            margin: 0;
+        }
+
+        footer div {
+            flex: 1;
+            margin: 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: #f4a261;
+            text-decoration: none;
+        }
+
+        /* Mobile responsiveness */
+        @media screen and (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px 0;
+                margin-left: 0;
+                width: 100%;
+                background-color: white;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li a {
+                color: #2d6a4f;
+            }
+
+            nav ul li a.contact-btn {
+                background-color: #f4a261;
+                color: white;
+            }
+
+            #menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                color: #2d6a4f;
+                font-size: 2.5em;
+                cursor: pointer;
+                margin: 10px auto;
+                padding: 5px 15px;
+            }
+
+            .team-page {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 10px auto;
+                max-width: 95%;
+            }
+
+            .team-member {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .team-member img {
+                max-width: 150px;
+                height: auto;
+            }
+
+            .contact-page {
+                margin: 10px;
+                padding: 20px;
+                width: auto;
+            }
+
+            .contact-page > div {
+                flex-direction: column !important;
+                gap: 20px !important;
+            }
+
+            .contact-page > div > div {
+                width: 100% !important;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 20px;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+
+            .form-group {
+                width: 100%;
+            }
+
+            .contact-page input,
+            .contact-page textarea {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 20px;
+            }
+
+            footer img {
+                margin: 0;
+            }
+
+            footer div {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="#" onclick="showTab('home')">
+            <img src="https://i.postimg.cc/8PRsR4vT/inkspace-Sideways-logo-5.png" alt="Logo">
+        </a>
+        <button id="menu-toggle">☰</button>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showTab('home')">Home</a></li>
+                <li><a href="#" onclick="showTab('team')">Team</a></li>
+                <li><a href="#contact" class="contact-btn" onclick="showTab('contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="home" class="tab-content active">
+        <div class="hero">
+            <h1>Carrying the Torch of Legacy and Growth</h1>
+            <p>Your business deserves a future as strong as its legacy.</p>
+            <button onclick="showTab('contact')">Let's Begin the Conversation</button>
+        </div>
+
+        <section class="about">
+            <div class="about-content">
+                <h2>Who We Are</h2>
+                <p>OneHeritage Partners is dedicated to acquiring and nurturing a single, enduringly profitable business. We aim to preserve your legacy and ensure sustainable growth for generations to come.</p>
+            </div>
+        </section>
+
+        <section class="mission">
+            <div class="mission-content">
+                <h2>Why We Are Different</h2>
+                <p>We stand for preserving the legacy of businesses while empowering them for future success. Our vision is rooted in respect for the past and a commitment to long-term growth.</p>
+            </div>
+        </section>
+    </div>
+
+    <div id="team" class="tab-content">
+        <div class="team-header">
+            <h2>Meet The Team</h2>
+            <p>At OneHeritage Partners, our team combines expertise and a commitment to preserving legacies while driving innovation and sustainable growth. Meet the professionals behind our success.</p>
+        </div>
+        <div class="team-page">
+            <div class="team-member">
+                <img src="https://via.placeholder.com/200" alt="Hassan Tariq">
+                <h3>Hassan Tariq</h3>
+                <a href="mailto:hassan@oneheritagepartners.com" class="email-link">hassan@oneheritagepartners.com</a>
+                <p>(646) 236-7525</p>
+                <a href="https://linkedin.com/in/hassantariq" target="_blank">LinkedIn</a>
+                <p class="role"><strong>Managing Partner</strong></p>
+                <p>Hassan Tariq is the Co-Founder and Managing Partner at OneHeritage Partners. With over 14 years of experience in finance and technology, Hassan has held leadership roles at premier financial institutions such as JP Morgan, Barclays, and Lazard Asset Management. Most recently, he led global operations for Verition Fund Management.</p>
+                <p>Previously, Hassan co-founded a food-tech startup recognized by New York City's accelerator program and launched a consulting firm to empower small businesses with AI and cloud strategies. He is pursuing an Executive MBA at Columbia Business School.</p>
+                <p>Hassan was born in Lahore, Pakistan, and moved to New York City for higher education. Working at local small businesses to fund his college degree, he developed a deep appreciation for small businesses and their contributions to the American economy.</p>
+                <p>Hassan resides in New York with his wife and two daughters. He loves tennis, motorcycles, and philosophy books and values integrity, innovation, and lifelong learning.</p>
+            </div>
+
+            <div class="team-member">
+    <img src="https://via.placeholder.com/200" alt="Mohsin Tariq">
+    <h3>Mohsin Tariq</h3>
+    <a href="mailto:mohsin@oneheritagepartners.com" class="email-link">mohsin@oneheritagepartners.com</a>
+    <p>(929) 255-5785</p>
+    <a href="https://linkedin.com/in/mohsintariq" target="_blank">LinkedIn</a>
+    <p class="role"><strong>Managing Partner</strong></p>
+    <p>Mohsin Tariq is a Co-Founder and a Managing Partner at OneHeritage Partners. Prior to OneHeritage Partners, Mohsin was an active operator across various industries such as Logistics, Payments and Consumer Products and led impactful project at DHL, i2cinc and Nestle among others.</p>
+    <p>Entrepreneur at heart, most recently, Mohsin has been involved in the startup community where he helped launch a first commercial daycare center in a developing country and increase operational efficiency at a travel startup. Previously, he co-founded a cloud kitchen platform recognized by New York City's accelerator program.</p>
+    <p>He received MBA from the Indiana University Kelley School of Business and Bachelors of Arts from COMSATS University, Pakistan. Born in Lahore, Pakistan, he values legacy, and empowering others.</p>
+    <p>Mohsin lives in New York with his wife and two children, enjoys staying active through fitness training, playing soccer, and mentoring middle school kids and adults for standardized test success.</p>
+</div>
+        </div>
+    </div>
+ 
+    <div id="contact" class="tab-content">
+        <div class="contact-page">
+            <div style="display: flex; justify-content: space-between; gap: 40px;">
+                <div style="width: 45%;">
+                    <h2>Contact Us</h2>
+                    <p>We'd love to learn more about your story and help out in any way we can. Please fill out the form below or contact us directly.</p>
+                    <p>Mohsin Tariq<br><a href="mailto:mohsin@oneheritagepartners.com">mohsin@oneheritagepartners.com</a><br>(929) 255-5785</p>
+                    <p>Hassan Tariq<br><a href="mailto:hassan@oneheritagepartners.com">hassan@oneheritagepartners.com</a><br>(646) 236-7525</p>
+                    <p>123 Legacy Lane<br>Growth City, GC 45678</p>
+                </div>
+                <div style="width: 45%;">
+                    <h2>Get in Touch</h2>
+                    <form action="#" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name (required)</label>
+                                <input type="text" id="first-name" name="first-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name (required)</label>
+                                <input type="text" id="last-name" name="last-name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email (required)</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone (optional)</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message (required)</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <img src="https://i.postimg.cc/8PRsR4vT/inkspace-Sideways-logo-5.png" alt="OneHeritage Partners Logo">
+        <div>
+            <p>info@oneheritagepartners.com</p>
+            <p><u>Mohsin Tariq</u> (929) 255-5785 &nbsp;&nbsp;|&nbsp;&nbsp; <u>Hassan Tariq</u> (646) 236-7525</p>
+            <p>123 Legacy Lane, Growth City, GC 45678</p>
+            <p>&copy; 2024 OneHeritage Partners. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.querySelector('nav ul');
+
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('show');
+            });
+        });
+    </script>
+</body>
+</html>
